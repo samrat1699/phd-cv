@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Details | Samrat Kumar Dev Sharma</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand"><a href="index.html">Samrat Kumar Dev Sharma</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About me</a></li>
+                <li><a href="index.html#academic" class="nav-link">Academic</a></li>
+                <li><a href="index.html#interests" class="nav-link">Research</a></li>
+                <li><a href="index.html#publications" class="nav-link">Publications</a></li>
+                <li><a href="publications.html" class="nav-link">Documents</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons"><button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button></div>
+        </div>
+    </nav>
+
+    <div class="paper-details-page">
+        <div class="paper-container">
+            <button onclick="history.back()" class="smart-back-button"><i class="fas fa-arrow-left"></i> Go Back</button>
+            <h1 id="paper-title" class="paper-main-title">Loading Paper...</h1>
+            <div class="paper-meta-info">
+                <p><i class="fas fa-users"></i> <strong>Authors:</strong> <span id="paper-authors"></span></p>
+                <p><i class="fas fa-book-open"></i> <strong>Published in:</strong> <span id="paper-venue"></span></p>
+            </div>
+            <div class="paper-section">
+                <h2><i class="fas fa-align-left"></i> Abstract</h2>
+                <p id="paper-abstract" class="abstract-text"></p>
+            </div>
+            <div class="paper-section">
+                <h2><i class="fas fa-tags"></i> Keywords</h2>
+                <div id="paper-keywords" class="keywords-container"></div>
+            </div>
+            <div class="paper-actions">
+                <a href="#" id="link-pdf" class="action-btn"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="#" id="link-doi" class="action-btn"><i class="fas fa-link"></i> View DOI</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const papersDatabase = {
+            
+            "3": {
+                title: "𝘌𝘷𝘢𝘭𝘶𝘢𝘵𝘪𝘯𝘨 𝘉𝘳𝘦𝘢𝘴𝘵 𝘊𝘢𝘯𝘤𝘦𝘳 𝘛𝘳𝘦𝘢𝘵𝘮𝘦𝘯𝘵 𝘖𝘶𝘵𝘤𝘰𝘮𝘦𝘴 𝘛𝘩𝘳𝘰𝘶𝘨𝘩 𝘔𝘢𝘤𝘩𝘪𝘯𝘦 𝘓𝘦𝘢𝘳𝘯𝘪𝘯𝘨 𝘚𝘶𝘳𝘷𝘪𝘷𝘢𝘭 𝘈𝘯𝘢𝘭𝘺𝘴𝘪𝘴 𝘢𝘯𝘥 𝘔𝘰𝘥𝘦𝘭 𝘐𝘯𝘵𝘦𝘳𝘱𝘳𝘦𝘵𝘢𝘣𝘪𝘭𝘪𝘵𝘺",
+                authors: "S. K. D. Sharma, Saem Mohammad Nirob, Rumana Islam Riya, Md. Yusuf Hossain Ador, Md. Rokunuzzaman & Mohammed Islam",
+                venue: "𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐧𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐨𝐧 𝐀𝐩𝐩𝐥𝐢𝐞𝐝 𝐀𝐫𝐭𝐢𝐟𝐢𝐜𝐢𝐚𝐥 𝐈𝐧𝐭𝐞𝐥𝐥𝐢𝐠𝐞𝐧𝐜𝐞 (2𝐀𝐈-2026)",
+                abstract: "The breast cancer survival rate prediction remains a challenge in personalized cancer treatment. It requires models that balance predictive accuracy with clinical interpretability. This study evaluates ML survival models augmented with advanced feature engineering techniques. We present an interpretable ensemble strategy that integrates Cox proportional hazards, regularized Cox regression, and random survival forest models. The model demonstrated strong performance on the SEER breast cancer dataset, with a C-index of 0.768 and an IBS of 0.087. Our key contributions include: (1) a novel node-positive ratio feature that improves risk stratification, (2) comprehensive statistical validation with confidence intervals and significance testing, (3) enhanced SHAP-based interpretability analysis that reveals clinically relevant feature interactions, and (4) external validation on multi-institutional data. The proposed ensemble model demonstrates statistically significant improvements over individual models while maintaining clinical interpretability essential for adoption in oncological practice.",
+                keywords: ["Neural Networks", "Model Optimization", "Edge Computing", "Quantization", "Low-Resource"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "https://2ai-conference.org/"
+            },
+            "4": {
+                title: "Breast Cancer Detection with Explainable AI: Grad-CAM and Bounding Box- Based Interpretability",
+                authors: "S. K. D. Sharma, Md. Yusuf Hossain Ador, Md. Rokunuzzaman, Futanta Chakma & Mahmud Hossen",
+                venue: " Bangladesh Breast Cancer Conference, 2025",
+                abstract: "Breast cancer detection using mammographic images is a vital application of AI in medical diagnostics, but the lack of interpretability in deep learning models limits clinical adoption. This study integrates Grad-CAM heatmaps and bounding box visualization to enhance transparency and reliability in AI-driven detection. Using the RSNA Screening Mammography dataset of 54,706 images, we addressed class imbalance through focal loss and up-sampling. Data augmentation techniques and ConvNeXtV1-small and EfficientNetV2 architectures were applied, with breast bounding boxes detected via YOLOX. ConvNeXtV1-small outperformed EfficientNetV2, achieving a probabilistic F1 (pF1) score of 0.558 versus 0.331. Grad-CAM heatmaps highlighted diagnostic features, aligning with radiologists' assessments, while bounding boxes improved lesion localization. These techniques enhance AI interpretability, improving trust in automated breast cancer detection. Future work will explore Transformer-based architectures and advanced data augmentation to improve robustness.",
+                keywords: ["Computer Vision", "Object Detection", "YOLO", "Real-Time Processing", "Deep Learning"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "https://bsbcs.info/event/1/publication/51/"
+            },
+            "5": {
+                title: "Transformer Models for Low-Resource Language Translation",
+                authors: "Collaborator A, S. K. D. Sharma, Collaborator B",
+                venue: "Annual Meeting of the Association for Computational Linguistics (ACL), 2023",
+                abstract: "This paper addresses the challenge of machine translation for low-resource languages. We develop a cross-lingual transfer learning approach using pre-trained transformer models, demonstrating a 35% improvement in BLEU scores for 12 underrepresented languages compared to existing baseline models.",
+                keywords: ["NLP", "Machine Translation", "Transformers", "Low-Resource Languages", "Transfer Learning"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            },
+            "6": {
+                title: "Scalable Machine Learning Pipelines for Healthcare",
+                authors: "S. K. D. Sharma, Research Team",
+                venue: "International Conference on Machine Learning (ICML), 2023",
+                abstract: "We present a scalable, end-to-end machine learning pipeline designed for large-scale healthcare data processing. The system integrates automated data cleaning, feature engineering, and model training, reducing the time-to-insight for medical researchers by over 60% while ensuring strict compliance with data privacy regulations.",
+                keywords: ["Machine Learning", "Data Pipelines", "Healthcare", "Scalability", "Data Privacy"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paperId = urlParams.get('id');
+            const paper = papersDatabase[paperId];
+
+            if (paper) {
+                document.title = paper.title + " | Samrat Kumar Dev Sharma";
+                document.getElementById('paper-title').textContent = paper.title;
+                document.getElementById('paper-authors').textContent = paper.authors;
+                document.getElementById('paper-venue').textContent = paper.venue;
+                document.getElementById('paper-abstract').textContent = paper.abstract;
+                document.getElementById('link-pdf').href = paper.pdfLink;
+                document.getElementById('link-doi').href = paper.doiLink;
+
+                const keywordsContainer = document.getElementById('paper-keywords');
+                keywordsContainer.innerHTML = '';
+                paper.keywords.forEach(keyword => {
+                    const span = document.createElement('span');
+                    span.className = 'keyword-tag';
+                    span.textContent = keyword;
+                    keywordsContainer.appendChild(span);
+                });
+            } else {
+                document.getElementById('paper-title').textContent = "Paper Not Found";
+                document.querySelector('.paper-section').style.display = 'none';
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+    <!-- FLOATING BACK BUTTON (Place this right before </body>) -->
+    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
+    <i class="fas fa-arrow-left"></i> Back to Publications
+    </a>
+</body>
+</html>

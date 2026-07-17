@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Details | Samrat Kumar Dev Sharma</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand"><a href="index.html">Samrat Kumar Dev Sharma</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About me</a></li>
+                <li><a href="index.html#academic" class="nav-link">Academic</a></li>
+                <li><a href="index.html#interests" class="nav-link">Research</a></li>
+                <li><a href="index.html#publications" class="nav-link">Publications</a></li>
+                <li><a href="publications.html" class="nav-link">Documents</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons"><button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button></div>
+        </div>
+    </nav>
+
+    <div class="paper-details-page">
+        <div class="paper-container">
+            <button onclick="history.back()" class="smart-back-button"><i class="fas fa-arrow-left"></i> Go Back</button>
+            <h1 id="paper-title" class="paper-main-title">Loading Paper...</h1>
+            <div class="paper-meta-info">
+                <p><i class="fas fa-users"></i> <strong>Authors:</strong> <span id="paper-authors"></span></p>
+                <p><i class="fas fa-book-open"></i> <strong>Published in:</strong> <span id="paper-venue"></span></p>
+            </div>
+            <div class="paper-section">
+                <h2><i class="fas fa-align-left"></i> Abstract</h2>
+                <p id="paper-abstract" class="abstract-text"></p>
+            </div>
+            <div class="paper-section">
+                <h2><i class="fas fa-tags"></i> Keywords</h2>
+                <div id="paper-keywords" class="keywords-container"></div>
+            </div>
+            <div class="paper-actions">
+                <a href="#" id="link-pdf" class="action-btn"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="#" id="link-doi" class="action-btn"><i class="fas fa-link"></i> View DOI</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const papersDatabase = {
+            "1": {
+                title: "Predicting low birth weight in Bangladesh using interpretable machine learning models",
+                authors: "S. K. D. Sharma, Md. Yusuf Hossain Ador, Md. Rukonuzzaman, Futanta Chakma, Mahmud Hossen, Jakir Hossain & Md. Kamruzzaman",
+                venue: "BMC Pregnancy and Childbirth (2026)",
+                abstract: `Background
+Low birth weight (LBW) remains a leading cause of neonatal mortality and long-term morbidity in low- and middle-income countries. This study aimed to develop and evaluate machine learning classifiers for predicting LBW using nationally representative survey data from Bangladesh, while explicitly distinguishing predictive modeling from causal inference.
+
+Methods
+We analyzed data from the 2022 Bangladesh Demographic and Health Survey (BDHS), yielding a final analytic sample of 3,400 mother–child pairs after complete-case exclusion. Survey weights, stratification, and clustering were incorporated into all modeling steps via sample_weight parameters and cluster-aware data splitting. Class imbalance was addressed using native class-weight optimization (scale_pos_weight, class_weight = "balanced") rather than synthetic oversampling to preserve survey representativeness. Seven machine learning classifiers were evaluated under a cluster-aware train-validation-test split. Model performance was assessed using discrimination metrics (AUROC, PR-AUC), calibration metrics (Brier score, slope, intercept), and 95% confidence intervals derived via stratified bootstrap resampling (B = 1,000). SHapley Additive exPlanations (SHAP) were used for model interpretability, with explicit framing of findings within a predictive context.
+
+Results
+XGBoost demonstrated the best calibrated and discriminative performance on the independent test set: AUROC = 0.828 (95% CI: 0.764–0.887), sensitivity = 0.711 (0.600–0.816), specificity = 0.847 (0.814–0.876), Brier score = 0.095 (0.077–0.114). SHAP analysis identified geographical division, birth order, paternal education, and household wealth as the most influential predictors. Variables non-significant in bivariate analysis but influential in XGBoost (e.g., child's sex, maternal age) likely contribute through higher-order interactions captured by tree-based ensembles. The positive association between antenatal care visits and predicted LBW risk likely reflects clinical triage patterns rather than causal harm.
+
+Conclusions
+Survey-aware machine learning, particularly XGBoost, provides a robust framework for LBW risk stratification in Bangladesh. While observational design precludes causal inference and external validation remains necessary, these findings support the potential utility of interpretable ML models for informing targeted maternal health interventions. Future work should prioritize prospective validation and incorporation of clinical biomarkers.`,
+                keywords: ["Machine learning", "XGBoost", "SHAP", "Bangladesh", "Demographic and Health Survey", "Predictive modeling"],
+                pdfLink: "assets/pdf/lbw.pdf", 
+                doiLink: "https://doi.org/10.1186/s12884-026-09255-2"
+            },
+            
+            "2": {
+                title: "Assessing the impact of early marriage and socioeconomic determinants on under-five morbidity: a cross-country analysis in South Asia",
+                authors: "Jakir Hossain, Abu Sayeed Md. Ripon Rouf, Muhammad Tareq, Md Rokunuzzaman & S. K. D. Sharma",
+                venue: "BMC Pediatr 26, 220 (2026)",
+                abstract:  `Background
+Early marriage and socioeconomic factors, which expose young mothers to early pregnancy under situations of adversity, are, as a result, dramatically associated with increased risk of children’s morbidity and perpetuate intergenerational cycles of poor health and disparity. Thus, this study aims to assess the association between early marriage and socioeconomic factors on children’s morbidity in South Asian countries using national survey data.
+
+Materials and methods
+This study utilized the most recent nationally representative Demographic and Health Survey (DHS) child datasets from five South Asian countries—Bangladesh, India, Pakistan, Afghanistan, and Nepal—comprising a total sample of 286,131 children. The study’s outcome variable was the child morbidity. In addition to descriptive statistics, a two-stage binary logistic regression was used to analyze factors influencing child morbidity.
+
+Results
+In South Asia, Pakistan had the highest prevalence of child morbidity at 44.38%, followed by Afghanistan at 42.25%, Bangladesh at 34.20%, Nepal at 28.33%, and India with the lowest at 17.72%. Binary logistic regression revealed key factors associated with under-five morbidity in South Asia. Children born to early-married mothers in Pakistan had a significantly higher risk of morbidity (OR = 1.43, 95% CI: 1.20–1.70). Higher morbidity was also associated with maternal secondary education in Pakistan (OR = 1.88, 95% CI: 1.40–2.53), eight or more antenatal care visits in Pakistan (OR = 1.75, 95% CI: 1.17–2.63), Afghanistan (OR = 2.23, 95% CI: 1.83–2.71), and female-headed households in India and Pakistan (OR = 1.14, 95% CI: 1.05–1.24). Breastfeeding was connected to higher child morbidity in Bangladesh, India, Pakistan, and Afghanistan. In contrast, higher maternal education was associated with a significant reduction in child morbidity in both India (OR = 0.81, 95% CI: 0.70–0.93) and Afghanistan (OR = 0.57, 95% CI: 0.45–0.72). Rural residence (OR = 0.80, 95% CI: 0.73–0.87) in Afghanistan, as well as wealth status in India (OR = 0.79, 95% CI: 0.72–0.87), were protective factors.
+
+Conclusion
+These findings highlight the urgent need to delay early marriage and address socioeconomic disparities to reduce child morbidity in South Asia. Improving maternal education, enforcing laws to delay the age at marriage, and increasing access to healthcare are crucial for enhancing child health and well-being in the region.`,
+                keywords: ["Early marriage", "Under-five morbidity", "Child health", "Socioeconomic determinants", "Data Mining"],
+                pdfLink: "assets/pdf/mor.pdf", 
+                doiLink: "https://doi.org/10.1186/s12887-026-06596-x"
+            },
+
+
+
+            "3": {
+                title: "Optimizing Neural Networks for Low-Resource Environments",
+                authors: "Co-Author Name, S. K. D. Sharma",
+                venue: "IEEE Transactions on Machine Learning, Vol. 12, 2023",
+                abstract: "This research introduces a lightweight neural network optimization technique specifically designed for deployment in low-resource computing environments. Through novel pruning and quantization strategies, we reduced model size by 60% while retaining 98% of the original accuracy, enabling efficient edge computing applications in remote areas.",
+                keywords: ["Neural Networks", "Model Optimization", "Edge Computing", "Quantization", "Low-Resource"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            },
+            "4": {
+                title: "Real-Time Object Detection Using Enhanced YOLO Architecture",
+                authors: "S. K. D. Sharma, Team Member One, Team Member Two",
+                venue: "IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2024",
+                abstract: "We propose an enhanced YOLO architecture that significantly improves real-time object detection speeds without compromising accuracy. By introducing a novel attention mechanism and optimizing the feature pyramid network, our model achieves state-of-the-art performance on the COCO dataset while running at 60 FPS on standard hardware.",
+                keywords: ["Computer Vision", "Object Detection", "YOLO", "Real-Time Processing", "Deep Learning"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            },
+            "5": {
+                title: "Transformer Models for Low-Resource Language Translation",
+                authors: "Collaborator A, S. K. D. Sharma, Collaborator B",
+                venue: "Annual Meeting of the Association for Computational Linguistics (ACL), 2023",
+                abstract: "This paper addresses the challenge of machine translation for low-resource languages. We develop a cross-lingual transfer learning approach using pre-trained transformer models, demonstrating a 35% improvement in BLEU scores for 12 underrepresented languages compared to existing baseline models.",
+                keywords: ["NLP", "Machine Translation", "Transformers", "Low-Resource Languages", "Transfer Learning"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            },
+            "6": {
+                title: "Scalable Machine Learning Pipelines for Healthcare",
+                authors: "S. K. D. Sharma, Research Team",
+                venue: "International Conference on Machine Learning (ICML), 2023",
+                abstract: "We present a scalable, end-to-end machine learning pipeline designed for large-scale healthcare data processing. The system integrates automated data cleaning, feature engineering, and model training, reducing the time-to-insight for medical researchers by over 60% while ensuring strict compliance with data privacy regulations.",
+                keywords: ["Machine Learning", "Data Pipelines", "Healthcare", "Scalability", "Data Privacy"],
+                pdfLink: "assets/cv.pdf", 
+                doiLink: "#"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paperId = urlParams.get('id');
+            const paper = papersDatabase[paperId];
+
+            if (paper) {
+                document.title = paper.title + " | Samrat Kumar Dev Sharma";
+                document.getElementById('paper-title').textContent = paper.title;
+                document.getElementById('paper-authors').textContent = paper.authors;
+                document.getElementById('paper-venue').textContent = paper.venue;
+                document.getElementById('paper-abstract').textContent = paper.abstract;
+                document.getElementById('link-pdf').href = paper.pdfLink;
+                document.getElementById('link-doi').href = paper.doiLink;
+
+                const keywordsContainer = document.getElementById('paper-keywords');
+                keywordsContainer.innerHTML = '';
+                paper.keywords.forEach(keyword => {
+                    const span = document.createElement('span');
+                    span.className = 'keyword-tag';
+                    span.textContent = keyword;
+                    keywordsContainer.appendChild(span);
+                });
+            } else {
+                document.getElementById('paper-title').textContent = "Paper Not Found";
+                document.querySelector('.paper-section').style.display = 'none';
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+    <!-- FLOATING BACK BUTTON (Place this right before </body>) -->
+    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
+    <i class="fas fa-arrow-left"></i> Back to Publications
+    </a>
+</body>
+</html>
