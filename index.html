@@ -16,9 +16,15 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <a href="#home">Samrat Kumar Dev Sharma</a>
+                <a href="index.html">Samrat Kumar Dev Sharma</a>
             </div>
-            <ul class="nav-menu">
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#about" class="nav-link">About me</a></li>
                 <li><a href="#academic" class="nav-link">Academic</a></li>
                 <li><a href="#interests" class="nav-link">Research</a></li>
@@ -27,13 +33,22 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            
             <div class="nav-icons">
-                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
-                    <i class="fas fa-sun"></i>
-                </button>
+                <button id="search-toggle" class="icon-btn" title="Search"><i class="fas fa-search"></i></button>
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button>
             </div>
         </div>
     </nav>
+
+    <!-- Search Overlay (Placed correctly after nav) -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
 
     <!-- Main Content Wrapper -->
     <div class="main-wrapper">
@@ -46,26 +61,15 @@
                 <p class="profile-affiliation">Jagannath University</p>
                 
                 <div class="profile-social">
-                    <a href="https://scholar.google.com/citations?user=Cy1ltVQAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">
-                        <i class="ai ai-google-scholar"></i>
-                    </a>
-                    <a href="https://orcid.org/0009-0002-0484-4289" target="_blank" class="social-icon" title="ORCID">
-                        <i class="ai ai-orcid"></i>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Samrat-Kumar-Dev-Sharma" target="_blank" class="social-icon" title="ResearchGate">
-                        <i class="ai ai-researchgate"></i>
-                    </a>
-                    <a href="https://www.kaggle.com/samrat12" target="_blank" class="social-icon" title="Kaggle">
-                        <i class="fab fa-kaggle"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/samrat-kumar-dev-sharma-b0a5a9212/" target="_blank" class="social-icon" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                    <a href="https://scholar.google.com/citations?user=Cy1ltVQAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                    <a href="https://orcid.org/0009-0002-0484-4289" target="_blank" class="social-icon" title="ORCID"><i class="ai ai-orcid"></i></a>
+                    <a href="https://www.researchgate.net/profile/Samrat-Kumar-Dev-Sharma" target="_blank" class="social-icon" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
+                    <a href="https://www.kaggle.com/samrat12" target="_blank" class="social-icon" title="Kaggle"><i class="fab fa-kaggle"></i></a>
+                    <a href="https://www.linkedin.com/in/samrat-kumar-dev-sharma-b0a5a9212/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
-                <!-- ADD THIS BUTTON RIGHT HERE -->
-                    <a href="assets/cv/finalsamratCV.pdf" class="cv-download-btn" download>
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
+                <a href="assets/cv/finalsamratCV.pdf" class="cv-download-btn" download>
+                    <i class="fas fa-download"></i> Download CV
+                </a>
             </div>
         </aside>
 
@@ -77,110 +81,63 @@
                 <h2 class="section-heading">About me</h2>
                 <div class="content-text">
                     <p>I recently completed my Bachelor of Science in Statistics and am currently working as a research fellow at the ARI (Advanced Research & Innovation) where I contribute to ongoing research projects in biostatistics, data analysis, and applied statistical modeling.</p>
-                    
                     <p>I am passionate about advancing my knowledge and research skills, and I plan to pursue a PhD in Statistics or related fields. My current work focuses on applying statistical methods and computational tools to real-world datasets, and I am particularly interested in areas such as machine learning, causal inference, and bioinformatics.</p>
-                    
                     <p>I am committed to learning, collaborating on research projects, and contributing to high-quality, reproducible research. I am excited to develop my skills further and make meaningful contributions to the field of statistics and data science.</p>
                 </div>
             </section>
 
-            <!-- Academic Information Section -->
+            <!-- Academic Information Section (2x2 Grid) -->
             <section id="academic" class="content-section">
                 <h2 class="section-heading">Academic Information</h2>
-                
-                <div class="academic-item">
-                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                    <div class="education-list">
-                        <div class="edu-item">
-                            <div class="edu-degree">Bachelor of Science in Statistics</div>
-                            <div class="edu-school">Jagannath University</div>
-                            <div class="edu-year">Completed 2025</div>
-                        </div>
-                        <div class="edu-item">
-                            <div class="edu-degree">Master of Science in Statistics</div>
-                            <div class="edu-school">Jagannath University</div>
-                            <div class="edu-year">Current</div>
+                <div class="academic-grid">
+                    <!-- Top Left: Education -->
+                    <div class="academic-card">
+                        <div class="academic-card-header"><i class="fas fa-graduation-cap"></i><h3>Education</h3></div>
+                        <div class="academic-card-content">
+                            <div class="edu-item">
+                                <div class="edu-degree">Master of Science in Statistics</div>
+                                <div class="edu-school"><i class="fas fa-university"></i> Jagannath University</div>
+                                <div class="edu-year"><i class="fas fa-calendar"></i> Current</div>
+                            </div>
+                            <div class="edu-item">
+                                <div class="edu-degree">Bachelor of Science in Statistics</div>
+                                <div class="edu-school"><i class="fas fa-university"></i> Jagannath University</div>
+                                <div class="edu-year"><i class="fas fa-calendar"></i> Completed 2025</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="academic-item">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <ul class="cert-list">
-                        <li>
-                            <i class="fas fa-check-circle"></i> 
-                            <a href="https://coursera.org/share/088a9092c0468774e6cab7cdce6f81a0" target="_blank" class="cert-link">
-                                Machine Learning - Stanford Online
-                            </a>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i> 
-                            <a href="https://coursera.org/share/f545de8a518290c519db4fed4218fc1a" target="_blank" class="cert-link">
-                                Deep Learning Specialization - Coursera
-                            </a>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i> 
-                            <a href="https://coursera.org/share/e9d1e200096575adbe0198aef35e6f56" target="_blank" class="cert-link">
-                                Learn SQL Basics for Data Science Specialization - Coursera
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- Top Right: Research Interests -->
+                    <div class="academic-card">
+                        <div class="academic-card-header"><i class="fas fa-flask"></i><h3>Research Interests</h3></div>
+                        <div class="academic-card-content">
+                            <div class="interest-item-compact"><i class="fas fa-brain"></i><div><h4>Machine Learning</h4><p>Deep learning, neural networks, predictive modeling</p></div></div>
+                            <div class="interest-item-compact"><i class="fas fa-dna"></i><div><h4>Bioinformatics</h4><p>Computational biology, genomic data analysis</p></div></div>
+                            <div class="interest-item-compact"><i class="fas fa-chart-line"></i><div><h4>Causal Inference</h4><p>Causal discovery, statistical methods</p></div></div>
+                            <div class="interest-item-compact"><i class="fas fa-database"></i><div><h4>Data Analysis</h4><p>Statistical modeling, data-driven insights</p></div></div>
+                        </div>
+                    </div>
 
+                    <!-- Bottom Left: Certifications -->
+                    <div class="academic-card">
+                        <div class="academic-card-header"><i class="fas fa-certificate"></i><h3>Certifications</h3></div>
+                        <div class="academic-card-content">
+                            <ul class="cert-list">
+                                <li><i class="fas fa-check-circle"></i> <a href="https://coursera.org/share/088a9092c0468774e6cab7cdce6f81a0" target="_blank" class="cert-link">Machine Learning - Stanford Online</a></li>
+                                <li><i class="fas fa-check-circle"></i> <a href="https://coursera.org/share/f545de8a518290c519db4fed4218fc1a" target="_blank" class="cert-link">Deep Learning Specialization</a></li>
+                                <li><i class="fas fa-check-circle"></i> <a href="https://coursera.org/share/e9d1e200096575adbe0198aef35e6f56" target="_blank" class="cert-link">SQL Basics for Data Science</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <div class="academic-item">
-                    <h3><i class="fas fa-tools"></i> Technical Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <strong>Programming:</strong> Python, R, SQL, C++
-                        </div>
-                        <div class="skill-category">
-                            <strong>ML Frameworks:</strong> TensorFlow, PyTorch, Scikit-learn
-                        </div>
-                        <div class="skill-category">
-                            <strong>Tools:</strong> Git, LaTeX, Jupyter, Docker
-                        </div>
-                        <div class="skill-category">
-                            <strong>Analysis:</strong> Statistical Modeling, Data Visualization
-                        </div>
-                        <div class="skill-category">
-                            <strong>Statistical Softwares:</strong> SPSS, STATA, PowerBI, Tablue
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Research Interests Section -->
-            <section id="interests" class="content-section">
-                <h2 class="section-heading">Research Interests</h2>
-                <div class="interests-list">
-                    <div class="interest-item">
-                        <i class="fas fa-brain"></i>
-                        <div>
-                            <h3>Machine Learning</h3>
-                            <p>Deep learning, neural networks, and predictive modeling</p>
-                        </div>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-dna"></i>
-                        <div>
-                            <h3>Bioinformatics</h3>
-                            <p>Computational biology and genomic data analysis</p>
-                        </div>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-chart-line"></i>
-                        <div>
-                            <h3>Causal Inference</h3>
-                            <p>Statistical methods for causal discovery and inference</p>
-                        </div>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-database"></i>
-                        <div>
-                            <h3>Data Analysis</h3>
-                            <p>Statistical modeling and data-driven insights</p>
+                    <!-- Bottom Right: Technical Skills -->
+                    <div class="academic-card">
+                        <div class="academic-card-header"><i class="fas fa-tools"></i><h3>Technical Skills</h3></div>
+                        <div class="academic-card-content">
+                            <div class="skill-category"><strong><i class="fas fa-code"></i> Programming:</strong><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">R</span><span class="skill-tag">SQL</span><span class="skill-tag">C++</span></div></div>
+                            <div class="skill-category"><strong><i class="fas fa-brain"></i> ML Frameworks:</strong><div class="skill-tags"><span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Scikit-learn</span></div></div>
+                            <div class="skill-category"><strong><i class="fas fa-laptop-code"></i> Tools:</strong><div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">LaTeX</span><span class="skill-tag">Jupyter</span><span class="skill-tag">Docker</span></div></div>
+                            <div class="skill-category"><strong><i class="fas fa-chart-bar"></i> Statistical Software:</strong><div class="skill-tags"><span class="skill-tag">SPSS</span><span class="skill-tag">STATA</span><span class="skill-tag">PowerBI</span><span class="skill-tag">Tableau</span></div></div>
                         </div>
                     </div>
                 </div>
@@ -189,69 +146,57 @@
             <!-- Publications Preview Section -->
             <section id="publications" class="content-section">
                 <h2 class="section-heading">Publications</h2>
-
                 <div class="pub-category">
                     <h3><i class="fas fa-book"></i> Journal Papers</h3>
                     <div class="pub-item">
-                        <!-- Notice the ?id=1 at the end of the link -->
                         <a href="paper-details.html?id=1" class="pub-title-link">Predicting low birth weight in Bangladesh using interpretable machine learning models</a>
-                        <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Md. Yusuf Hossain Ador, Md. Rukonuzzaman, Futanta Chakma, Mahmud Hossen, Jakir Hossain & Md. Kamruzzaman </div>
+                        <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Md. Yusuf Hossain Ador, Md. Rukonuzzaman, Futanta Chakma, Mahmud Hossen, Jakir Hossain & Md. Kamruzzaman</div>
                         <div class="pub-venue">BMC Pregnancy Childbirth (2026)</div>
                         <div class="pub-links">
-                            <a href="assets/pdf/lbw.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://doi.org/10.1186/s12884-026-09255-2" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                            <a href="assets/pdf/lbw.pdf" class="pub-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="https://doi.org/10.1186/s12884-026-09255-2" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                         </div>
                     </div>
-
                     <div class="pub-item">
-                        <!-- Notice the ?id=2 for the second paper -->
                         <a href="paper-details.html?id=2" class="pub-title-link">Assessing the impact of early marriage and socioeconomic determinants on under-five morbidity: a cross-country analysis in South Asia</a>
-                        <div class="pub-authors">Jakir Hossain, Abu Sayeed Md. Ripon Rouf, Muhammad Tareq, Md Rokunuzzaman,<strong>S. K. D. Sharma</strong></div>
+                        <div class="pub-authors">Jakir Hossain, Abu Sayeed Md. Ripon Rouf, Muhammad Tareq, Md Rokunuzzaman, <strong>S. K. D. Sharma</strong></div>
                         <div class="pub-venue">BMC Pediatr 26, 220 (2026)</div>
                         <div class="pub-links">
-                            <a href="assets/pdf/mor.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://doi.org/10.1186/s12887-026-06596-x" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                            <a href="assets/pdf/mor.pdf" class="pub-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="https://doi.org/10.1186/s12887-026-06596-x" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                         </div>
                     </div>
-                    
                 </div>
 
-
-                <!-- Conference Papers -->
                 <div class="pub-category">
                     <h3><i class="fas fa-microphone-alt"></i> Conference Papers</h3>
                     <div class="pub-item">
-                        <a href="conference.html?id=3" class="pub-title-link">𝘌𝘷𝘢𝘭𝘶𝘢𝘵𝘪𝘯𝘨 𝘉𝘳𝘦𝘢𝘴𝘵 𝘊𝘢𝘯𝘤𝘦𝘳 𝘛𝘳𝘦𝘢𝘵𝘮𝘦𝘯𝘵 𝘖𝘶𝘵𝘤𝘰𝘮𝘦𝘴 𝘛𝘩𝘳𝘰𝘶𝘨𝘩 𝘔𝘢𝘤𝘩𝘪𝘯𝘦 𝘓𝘦𝘢𝘳𝘯𝘪𝘯𝘨 𝘚𝘶𝘳𝘷𝘪𝘷𝘢𝘭 𝘈𝘯𝘢𝘭𝘺𝘴𝘪𝘴 𝘢𝘯𝘥 𝘔𝘰𝘥𝘦𝘭 𝘐𝘯𝘵𝘦𝘳𝘱𝘳𝘦𝘵𝘢𝘣𝘪𝘭𝘪𝘵𝘺</a>
+                        <a href="paper-details.html?id=3" class="pub-title-link">Evaluating Breast Cancer Treatment Outcomes Through Machine Learning Survival Analysis and Model Interpretability</a>
                         <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Saem Mohammad Nirob, Rumana Islam Riya, Md. Yusuf Hossain Ador, Md. Rokunuzzaman & Mohammed Islam</div>
-                        <div class="pub-venue">𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐧𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐨𝐧 𝐀𝐩𝐩𝐥𝐢𝐞𝐝 𝐀𝐫𝐭𝐢𝐟𝐢𝐜𝐢𝐚𝐥 𝐈𝐧𝐭𝐞𝐥𝐥𝐢𝐠𝐞𝐧𝐜𝐞 (2𝐀𝐈-2026)</div>
+                        <div class="pub-venue">International Conference on Applied Artificial Intelligence (2AI-2026)</div>
                         <div class="pub-links">
                             <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://2ai-conference.org/" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                            <a href="https://2ai-conference.org/" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                         </div>
                     </div>
                     <div class="pub-item">
-                        <a href="conference.html?id=4" class="pub-title-link">Breast Cancer Detection with Explainable AI: Grad-CAM and Bounding Box- Based Interpretability</a>
-                        <div class="pub-authors"><strong>S. K. D. Sharma,</strong>Md. Yusuf Hossain Ador, Md. Rokunuzzaman, Futanta Chakma & Mahmud Hossen</div>
+                        <a href="paper-details.html?id=4" class="pub-title-link">Breast Cancer Detection with Explainable AI: Grad-CAM and Bounding Box-Based Interpretability</a>
+                        <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Md. Yusuf Hossain Ador, Md. Rokunuzzaman, Futanta Chakma & Mahmud Hossen</div>
                         <div class="pub-venue">Bangladesh Breast Cancer Conference 2025</div>
                         <div class="pub-links">
                             <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://bsbcs.info/event/1/publication/51/" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                            <a href="https://bsbcs.info/event/1/publication/51/" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                         </div>
                     </div>
                 </div>
                 
-            <!--Research Project-->
-
-                <!-- Research Projects -->
-            <div class="pub-category">
-                <h3><i class="fas fa-flask"></i> Research Projects</h3>
-                    
-                    <!-- Project 1: Ongoing -->
-                <div class="pub-item">
-                    <div class="project-header">
-                        <div class="pub-title">AI-Driven Healthcare Diagnostics System</div>
-                        <span class="project-status ongoing">Ongoing</span>
-                    </div>
+                <div class="pub-category">
+                    <h3><i class="fas fa-flask"></i> Research Projects</h3>
+                    <div class="pub-item">
+                        <div class="project-header">
+                            <div class="pub-title">AI-Driven Healthcare Diagnostics System</div>
+                            <span class="project-status ongoing">Ongoing</span>
+                        </div>
                         <div class="pub-authors">Principal Investigator | 2023 - Present</div>
                         <div class="pub-venue">Developing ML system for disease detection with 94% accuracy</div>
                         <div class="pub-links">
@@ -259,98 +204,98 @@
                             <a href="#" class="pub-link"><i class="fas fa-link"></i> DOI</a>
                             <a href="#" class="pub-link"><i class="fas fa-code"></i> Code</a>
                         </div>
-                </div>
-
-                    <!-- Project 2: Completed -->
-                <div class="pub-item">
-                    <div class="project-header">
-                        <div class="pub-title">NLP for Low-Resource Languages</div>
-                        <span class="project-status completed">Completed</span>
                     </div>
-                    <div class="pub-authors">Lead Researcher | 2021 - 2023</div>
-                    <div class="pub-venue">Improved translation accuracy by 35% for 12 languages</div>
-                    <div class="pub-links">
+                    <div class="pub-item">
+                        <div class="project-header">
+                            <div class="pub-title">NLP for Low-Resource Languages</div>
+                            <span class="project-status completed">Completed</span>
+                        </div>
+                        <div class="pub-authors">Lead Researcher | 2021 - 2023</div>
+                        <div class="pub-venue">Improved translation accuracy by 35% for 12 languages</div>
+                        <div class="pub-links">
                             <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
                             <a href="#" class="pub-link"><i class="fas fa-link"></i> DOI</a>
                             <a href="#" class="pub-link"><i class="fas fa-code"></i> Code</a>
-                    </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="see-more-container">
-                    <a href="publications.html" class="btn-secondary">
-                        View All Publications <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="publications.html" class="btn-secondary">View All Publications <i class="fas fa-arrow-right"></i></a>
                 </div>
             </section>
 
-            <!-- Experience and Leadership Section -->
+            <!-- Experience and Leadership Section (2-Column Grid) -->
             <section id="experience" class="content-section">
                 <h2 class="section-heading">Experience & Leadership</h2>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Research Fellow</h3>
-                            <div class="timeline-org">ARI (Advanced Research & Innovation)</div>
-                            <div class="timeline-date">2024 - Present</div>
-                            <p>Leading research projects in biostatistics and data analysis. Mentoring junior researchers and collaborating on interdisciplinary teams.</p>
+                <div class="experience-grid">
+                    <!-- Left Column: Timeline -->
+                    <div class="experience-column">
+                        <h3 class="column-heading"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Research Fellow</h3>
+                                    <div class="timeline-org">ARI (Advanced Research & Innovation)</div>
+                                    <div class="timeline-date">2024 - Present</div>
+                                    <p>Leading research projects in biostatistics and data analysis. Mentoring junior researchers and collaborating on interdisciplinary teams.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Teaching Assistant</h3>
+                                    <div class="timeline-org">Jagannath University</div>
+                                    <div class="timeline-date">2022 - 2024</div>
+                                    <p>Assisted in teaching statistical methods and data analysis courses. Conducted tutorials and graded assignments for 100+ students.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Research Intern</h3>
+                                    <div class="timeline-org">Data Science Lab</div>
+                                    <div class="timeline-date">Summer 2023</div>
+                                    <p>Developed predictive models for healthcare applications. Presented findings at departmental symposium.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Teaching Assistant</h3>
-                            <div class="timeline-org">Jagannath University</div>
-                            <div class="timeline-date">2022 - 2024</div>
-                            <p>Assisted in teaching statistical methods and data analysis courses. Conducted tutorials and graded assignments for 100+ students.</p>
-                        </div>
+                    <!-- Right Column: Leadership -->
+                    <div class="experience-column">
+                        <h3 class="column-heading"><i class="fas fa-users"></i> Leadership & Roles</h3>
+                        <ul class="leadership-list">
+                            <li>
+                                <strong>CEO & Lead Researcher</strong>
+                                <p class="leadership-org">ARI (Advanced Research & Innovation)</p>
+                                <p>Directing advanced research initiatives in biostatistics and data analysis. Leading interdisciplinary teams to develop innovative, data-driven solutions.</p>
+                            </li>
+                            <li>
+                                <strong>President</strong>
+                                <p class="leadership-org">Statistics Club</p>
+                                <p>Organized research seminars, academic workshops, and networking events for students (2023-2024).</p>
+                            </li>
+                            <li>
+                                <strong>Conference Volunteer & Organizer</strong>
+                                <p class="leadership-org">International Conference on Data Science 2023</p>
+                                <p>Assisted in event coordination, speaker management, and logistics to ensure smooth execution.</p>
+                            </li>
+                            <li>
+                                <strong>Peer Mentor</strong>
+                                <p class="leadership-org">Department of Statistics</p>
+                                <p>Mentored undergraduate students in research methodologies, academic writing, and career development.</p>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Research Intern</h3>
-                            <div class="timeline-org">Data Science Lab</div>
-                            <div class="timeline-date">Summer 2023</div>
-                            <p>Developed predictive models for healthcare applications. Presented findings at departmental symposium.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="leadership-section">
-                    <h3><i class="fas fa-users"></i> Leadership & Professional Roles</h3>
-                    <ul class="leadership-list">
-                        <li>
-                            <strong>CEO & Lead Researcher</strong>
-                            <p class="leadership-org">ARI (Advanced Research & Innovation)</p>
-                            <p>Directing advanced research initiatives in biostatistics and data analysis. Leading interdisciplinary teams to develop innovative, data-driven solutions and managing core research operations.</p>
-                        </li>
-                        <li>
-                            <strong>President</strong>
-                            <p class="leadership-org">Statistics Club</p>
-                            <p>Organized research seminars, academic workshops, and networking events for students. Fostered a collaborative environment for statistical learning and career development (2023-2024).</p>
-                        </li>
-                        <li>
-                            <strong>Conference Volunteer & Organizer</strong>
-                            <p class="leadership-org">International Conference on Data Science 2023</p>
-                            <p>Assisted in event coordination, speaker management, and logistics to ensure the smooth execution of a major academic conference.</p>
-                        </li>
-                        <li>
-                            <strong>Peer Mentor</strong>
-                            <p class="leadership-org">Department of Statistics</p>
-                            <p>Mentored undergraduate students in research methodologies, academic writing, and career development.</p>
-                        </li>
-                    </ul>
                 </div>
             </section>
 
-            <!-- Contact Section -->
+            <!-- Contact Section (2x2 Grid) -->
             <section id="contact" class="content-section">
                 <h2 class="section-heading">Contact</h2>
-                <div class="contact-info">
+                <div class="contact-grid">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
@@ -358,19 +303,13 @@
                             <a href="mailto:samrat.sdev@gmail.com">samrat.sdev@gmail.com</a>
                         </div>
                     </div>
-
                     <div class="contact-item">
-                        <!-- Changed to the phone icon -->
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Contact Number</strong>
-                            <!-- Added a clickable link for mobile users -->
-                            <a href="tel:+8801751341969" style="color: var(--text-secondary); text-decoration: none;">
-                                +880 1751-341969
-                            </a>
+                            <a href="tel:+8801751341969" style="color: var(--text-secondary); text-decoration: none;">+880 1751-341969</a>
                         </div>
                     </div>
-                    
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -390,6 +329,11 @@
 
         </main>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="js/script.js"></script>
 </body>

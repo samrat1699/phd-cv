@@ -11,11 +11,19 @@
 </head>
 <body>
     
-    <!-- Top Navigation Bar (Same as index.html) -->
+    <!-- Top Navigation Bar (Matches index.html) -->
     <nav class="top-nav">
         <div class="nav-container">
-            <div class="nav-brand"><a href="index.html">Samrat Kumar Dev Sharma</a></div>
-            <ul class="nav-menu">
+            <div class="nav-brand">
+                <a href="index.html">Samrat Kumar Dev Sharma</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html#about" class="nav-link">About me</a></li>
                 <li><a href="index.html#academic" class="nav-link">Academic</a></li>
                 <li><a href="index.html#interests" class="nav-link">Research</a></li>
@@ -24,11 +32,28 @@
                 <li><a href="index.html#experience" class="nav-link">Experience</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
+            
             <div class="nav-icons">
-                <button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <!-- Search Icon Button -->
+                <button id="search-toggle" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
 
     <!-- 404 Error Content -->
     <div class="error-page-container">

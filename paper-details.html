@@ -10,10 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    
+    <!-- Top Navigation Bar -->
     <nav class="top-nav">
         <div class="nav-container">
-            <div class="nav-brand"><a href="index.html">Samrat Kumar Dev Sharma</a></div>
-            <ul class="nav-menu">
+            <div class="nav-brand">
+                <a href="index.html">Samrat Kumar Dev Sharma</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html#about" class="nav-link">About me</a></li>
                 <li><a href="index.html#academic" class="nav-link">Academic</a></li>
                 <li><a href="index.html#interests" class="nav-link">Research</a></li>
@@ -22,33 +32,66 @@
                 <li><a href="index.html#experience" class="nav-link">Experience</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-icons"><button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button></div>
+            
+            <div class="nav-icons">
+                <!-- Search Icon Button -->
+                <button id="search-toggle" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Paper Details Content -->
     <div class="paper-details-page">
         <div class="paper-container">
-            <button onclick="history.back()" class="smart-back-button"><i class="fas fa-arrow-left"></i> Go Back</button>
+            <button onclick="history.back()" class="smart-back-button">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+            
             <h1 id="paper-title" class="paper-main-title">Loading Paper...</h1>
+            
             <div class="paper-meta-info">
                 <p><i class="fas fa-users"></i> <strong>Authors:</strong> <span id="paper-authors"></span></p>
                 <p><i class="fas fa-book-open"></i> <strong>Published in:</strong> <span id="paper-venue"></span></p>
             </div>
+
             <div class="paper-section">
                 <h2><i class="fas fa-align-left"></i> Abstract</h2>
                 <p id="paper-abstract" class="abstract-text"></p>
             </div>
+
             <div class="paper-section">
                 <h2><i class="fas fa-tags"></i> Keywords</h2>
                 <div id="paper-keywords" class="keywords-container"></div>
             </div>
+
             <div class="paper-actions">
-                <a href="#" id="link-pdf" class="action-btn"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                <a href="#" id="link-doi" class="action-btn"><i class="fas fa-link"></i> View DOI</a>
+                <a href="#" id="link-pdf" class="action-btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="#" id="link-doi" class="action-btn" target="_blank"><i class="fas fa-link"></i> View DOI</a>
             </div>
         </div>
     </div>
 
+    <!-- FLOATING BACK BUTTON -->
+    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
+        <i class="fas fa-arrow-left"></i> Back to Publications
+    </a>
+
+    <!-- Paper Database & Loading Script -->
     <script>
         const papersDatabase = {
             "1": {
@@ -70,19 +113,18 @@ Survey-aware machine learning, particularly XGBoost, provides a robust framework
                 pdfLink: "assets/pdf/lbw.pdf", 
                 doiLink: "https://doi.org/10.1186/s12884-026-09255-2"
             },
-            
             "2": {
                 title: "Assessing the impact of early marriage and socioeconomic determinants on under-five morbidity: a cross-country analysis in South Asia",
                 authors: "Jakir Hossain, Abu Sayeed Md. Ripon Rouf, Muhammad Tareq, Md Rokunuzzaman & S. K. D. Sharma",
                 venue: "BMC Pediatr 26, 220 (2026)",
-                abstract:  `Background
+                abstract: `Background
 Early marriage and socioeconomic factors, which expose young mothers to early pregnancy under situations of adversity, are, as a result, dramatically associated with increased risk of children’s morbidity and perpetuate intergenerational cycles of poor health and disparity. Thus, this study aims to assess the association between early marriage and socioeconomic factors on children’s morbidity in South Asian countries using national survey data.
 
 Materials and methods
 This study utilized the most recent nationally representative Demographic and Health Survey (DHS) child datasets from five South Asian countries—Bangladesh, India, Pakistan, Afghanistan, and Nepal—comprising a total sample of 286,131 children. The study’s outcome variable was the child morbidity. In addition to descriptive statistics, a two-stage binary logistic regression was used to analyze factors influencing child morbidity.
 
 Results
-In South Asia, Pakistan had the highest prevalence of child morbidity at 44.38%, followed by Afghanistan at 42.25%, Bangladesh at 34.20%, Nepal at 28.33%, and India with the lowest at 17.72%. Binary logistic regression revealed key factors associated with under-five morbidity in South Asia. Children born to early-married mothers in Pakistan had a significantly higher risk of morbidity (OR = 1.43, 95% CI: 1.20–1.70). Higher morbidity was also associated with maternal secondary education in Pakistan (OR = 1.88, 95% CI: 1.40–2.53), eight or more antenatal care visits in Pakistan (OR = 1.75, 95% CI: 1.17–2.63), Afghanistan (OR = 2.23, 95% CI: 1.83–2.71), and female-headed households in India and Pakistan (OR = 1.14, 95% CI: 1.05–1.24). Breastfeeding was connected to higher child morbidity in Bangladesh, India, Pakistan, and Afghanistan. In contrast, higher maternal education was associated with a significant reduction in child morbidity in both India (OR = 0.81, 95% CI: 0.70–0.93) and Afghanistan (OR = 0.57, 95% CI: 0.45–0.72). Rural residence (OR = 0.80, 95% CI: 0.73–0.87) in Afghanistan, as well as wealth status in India (OR = 0.79, 95% CI: 0.72–0.87), were protective factors.
+In South Asia, Pakistan had the highest prevalence of child morbidity at 44.38%, followed by Afghanistan at 42.25%, Bangladesh at 34.20%, Nepal at 28.33%, and India with the lowest at 17.72%. Binary logistic regression revealed key factors associated with under-five morbidity in South Asia. Children born to early-married mothers in Pakistan had a significantly higher risk of morbidity (OR = 1.43, 95% CI: 1.20–1.70). Higher morbidity was also associated with maternal secondary education in Pakistan (OR = 1.88, 95% CI: 1.40–2.53), eight or more antenatal care visits in Pakistan (OR = 1.75, 95% CI: 1.17–2.63), Afghanistan (OR = 2.23, 95% CI: 1.83–2.71), and female-headed households in India and Pakistan (OR = 1.14, 95% CI: 1.05–1.24). Breastfeeding was connected to higher child morbidity in Bangladesh, India, Pakistan, and Afghanistan. In contrast, higher maternal education was associated with a significant reduction in child morbidity in both India (OR = 0.81, 95% CI: 0.70–0.93) and Afghanistan (OR = 0.57, 95% CI: 0.45–0.72). Rural residence (OR = 0.80, 95% CI: 0.73–0.87) in Afghanistan, as well as wealth status in India (OR = 0.79, 95% CI: 0.72–0.87), were protective factors.
 
 Conclusion
 These findings highlight the urgent need to delay early marriage and address socioeconomic disparities to reduce child morbidity in South Asia. Improving maternal education, enforcing laws to delay the age at marriage, and increasing access to healthcare are crucial for enhancing child health and well-being in the region.`,
@@ -90,48 +132,24 @@ These findings highlight the urgent need to delay early marriage and address soc
                 pdfLink: "assets/pdf/mor.pdf", 
                 doiLink: "https://doi.org/10.1186/s12887-026-06596-x"
             },
-
-
-
             "3": {
                 title: "Oral squamous cell detection using deep learning",
                 authors: "S. K. D. Sharma",
                 venue: "arXiv preprint arXiv:2408.08939, 2024",
-                abstract: `Oral squamous cell carcinoma (OSCC) represents a significant global health concern, with increasing
-incidence rates and challenges in early diagnosis and treatment planning. Early detection is crucial
-for improving patient outcomes and survival rates. Despite advances in understanding its molecular mechanisms, late diagnosis remains a substantial challenge in OSCC management. Precision
-medicine approaches are essential for personalized treatment, and deep machine learning techniques
-offer promising avenues for enhancing early detection and reducing cancer-related mortality and
-morbidity. Deep learning, a subset of machine learning, has shown remarkable progress in extracting
-and analyzing crucial information from medical imaging data. This article explores the technical
-foundations and algorithms of deep learning for OSCC, focusing on its applications in cancer detection, image classification, segmentation, and synthesis, as well as treatment planning. Automated
-image analysis powered by deep learning can provide valuable support to pathologists and clinicians
-in making informed decisions for cancer patients. EfficientNetB3, an advanced convolutional neural
-network architecture, has emerged as a leading model for image classification tasks, including medical
-imaging. Its superior performance, characterized by high accuracy, precision, and recall, makes it
-particularly promising for OSCC detection and diagnosis. EfficientNetB3 achieved an accuracy of
-0.9833, precision of 0.9782, and recall of 0.9782 in our analysis. By leveraging EfficientNetB3 and
-other deep learning technologies, clinicians can potentially improve the accuracy and efficiency of
-OSCC diagnosis, leading to more timely interventions and better patient outcomes. This article also
-discusses the role of deep learning in advancing precision medicine for OSCC and provides insights
-into prospects and challenges in leveraging this technology for enhanced cancer care.`,
+                abstract: `Oral squamous cell carcinoma (OSCC) represents a significant global health concern, with increasing incidence rates and challenges in early diagnosis and treatment planning. Early detection is crucial for improving patient outcomes and survival rates. Despite advances in understanding its molecular mechanisms, late diagnosis remains a substantial challenge in OSCC management. Precision medicine approaches are essential for personalized treatment, and deep machine learning techniques offer promising avenues for enhancing early detection and reducing cancer-related mortality and morbidity. Deep learning, a subset of machine learning, has shown remarkable progress in extracting and analyzing crucial information from medical imaging data. This article explores the technical foundations and algorithms of deep learning for OSCC, focusing on its applications in cancer detection, image classification, segmentation, and synthesis, as well as treatment planning. Automated image analysis powered by deep learning can provide valuable support to pathologists and clinicians in making informed decisions for cancer patients. EfficientNetB3, an advanced convolutional neural network architecture, has emerged as a leading model for image classification tasks, including medical imaging. Its superior performance, characterized by high accuracy, precision, and recall, makes it particularly promising for OSCC detection and diagnosis. EfficientNetB3 achieved an accuracy of 0.9833, precision of 0.9782, and recall of 0.9782 in our analysis. By leveraging EfficientNetB3 and other deep learning technologies, clinicians can potentially improve the accuracy and efficiency of OSCC diagnosis, leading to more timely interventions and better patient outcomes. This article also discusses the role of deep learning in advancing precision medicine for OSCC and provides insights into prospects and challenges in leveraging this technology for enhanced cancer care.`,
                 keywords: ["Deep Learning", "Machine Learning", "Oral squamous", "AI"],
                 pdfLink: "assets/pdf/osc.pdf", 
                 doiLink: "https://doi.org/10.48550/arXiv.2408.08939"
             },
-
-
             "4": {
-                title: "A Comparative Study of Machine Learning Classifiers for DifferentLanguage Spam SMS Detection: Performance Evaluation and Analysis",
+                title: "A Comparative Study of Machine Learning Classifiers for Different Language Spam SMS Detection: Performance Evaluation and Analysis",
                 authors: "S. K. D. Sharma",
                 venue: "Advances in Artificial Intelligence Research, 2024",
-                abstract:`With the continuous rise in the number of mobile device users, SMS (Short Message Service) remains a prevalent communication tool accessible on both smartphones and basic phones. Consequently, SMS traffic has experienced a significant surge. This increase has also led to a rise in spam messages, as spammers seek financial or business gains through activities like marketing promotions, lottery scams, and credit card information theft. Consequently, spam classification has become a focal point of research. In this paper, we explore the effectiveness of 11 machine learning algorithms for SMS spam detection, including multinomial Naïve Bayes, K-Nearest Neighbors (KNN), and Random Forest, among others. Utilizing datasets from UCI and Bangla SMS collections, our experimental results reveal that the multinomial Naïve Bayes algorithm surpasses previous models in spam detection, achieving accuracies of 98.65% and 89.10% in the respective datasets.` ,
+                abstract: `With the continuous rise in the number of mobile device users, SMS (Short Message Service) remains a prevalent communication tool accessible on both smartphones and basic phones. Consequently, SMS traffic has experienced a significant surge. This increase has also led to a rise in spam messages, as spammers seek financial or business gains through activities like marketing promotions, lottery scams, and credit card information theft. Consequently, spam classification has become a focal point of research. In this paper, we explore the effectiveness of 11 machine learning algorithms for SMS spam detection, including multinomial Naïve Bayes, K-Nearest Neighbors (KNN), and Random Forest, among others. Utilizing datasets from UCI and Bangla SMS collections, our experimental results reveal that the multinomial Naïve Bayes algorithm surpasses previous models in spam detection, achieving accuracies of 98.65% and 89.10% in the respective datasets.`,
                 keywords: ["Spam SMS Detection", "NLP", "Machine Learning", "Deep Learning", "Naïve Bayes"],
                 pdfLink: "assets/pdf/nlp.pdf", 
                 doiLink: "https://doi.org/10.54569/aair.1549781"
             },
-
-
             "5": {
                 title: "Transformer Models for Low-Resource Language Translation",
                 authors: "Collaborator A, S. K. D. Sharma, Collaborator B",
@@ -141,8 +159,6 @@ into prospects and challenges in leveraging this technology for enhanced cancer 
                 pdfLink: "assets/cv.pdf", 
                 doiLink: "#"
             },
-
-            
             "6": {
                 title: "Scalable Machine Learning Pipelines for Healthcare",
                 authors: "S. K. D. Sharma, Research Team",
@@ -178,14 +194,14 @@ into prospects and challenges in leveraging this technology for enhanced cancer 
                 });
             } else {
                 document.getElementById('paper-title').textContent = "Paper Not Found";
-                document.querySelector('.paper-section').style.display = 'none';
+                document.querySelectorAll('.paper-section').forEach(section => {
+                    section.style.display = 'none';
+                });
             }
         });
     </script>
+    
+    <!-- External Script for Theme, Mobile Menu, and Search -->
     <script src="js/script.js"></script>
-    <!-- FLOATING BACK BUTTON (Place this right before </body>) -->
-    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
-    <i class="fas fa-arrow-left"></i> Back to Publications
-    </a>
 </body>
 </html>

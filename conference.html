@@ -10,10 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    
+    <!-- Top Navigation Bar -->
     <nav class="top-nav">
         <div class="nav-container">
-            <div class="nav-brand"><a href="index.html">Samrat Kumar Dev Sharma</a></div>
-            <ul class="nav-menu">
+            <div class="nav-brand">
+                <a href="index.html">Samrat Kumar Dev Sharma</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html#about" class="nav-link">About me</a></li>
                 <li><a href="index.html#academic" class="nav-link">Academic</a></li>
                 <li><a href="index.html#interests" class="nav-link">Research</a></li>
@@ -22,51 +32,83 @@
                 <li><a href="index.html#experience" class="nav-link">Experience</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-icons"><button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button></div>
+            
+            <div class="nav-icons">
+                <!-- Search Icon Button -->
+                <button id="search-toggle" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Paper Details Content -->
     <div class="paper-details-page">
         <div class="paper-container">
-            <button onclick="history.back()" class="smart-back-button"><i class="fas fa-arrow-left"></i> Go Back</button>
+            <button onclick="history.back()" class="smart-back-button">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+            
             <h1 id="paper-title" class="paper-main-title">Loading Paper...</h1>
+            
             <div class="paper-meta-info">
                 <p><i class="fas fa-users"></i> <strong>Authors:</strong> <span id="paper-authors"></span></p>
                 <p><i class="fas fa-book-open"></i> <strong>Published in:</strong> <span id="paper-venue"></span></p>
             </div>
+
             <div class="paper-section">
                 <h2><i class="fas fa-align-left"></i> Abstract</h2>
                 <p id="paper-abstract" class="abstract-text"></p>
             </div>
+
             <div class="paper-section">
                 <h2><i class="fas fa-tags"></i> Keywords</h2>
                 <div id="paper-keywords" class="keywords-container"></div>
             </div>
+
             <div class="paper-actions">
-                <a href="#" id="link-pdf" class="action-btn"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                <a href="#" id="link-doi" class="action-btn"><i class="fas fa-link"></i> View DOI</a>
+                <a href="#" id="link-pdf" class="action-btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="#" id="link-doi" class="action-btn" target="_blank"><i class="fas fa-link"></i> View DOI</a>
             </div>
         </div>
     </div>
 
+    <!-- FLOATING BACK BUTTON -->
+    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
+        <i class="fas fa-arrow-left"></i> Back to Publications
+    </a>
+
+    <!-- Paper Database & Loading Script -->
     <script>
         const papersDatabase = {
-            
             "3": {
-                title: "𝘌𝘷𝘢𝘭𝘶𝘢𝘵𝘪𝘯𝘨 𝘉𝘳𝘦𝘢𝘴𝘵 𝘊𝘢𝘯𝘤𝘦𝘳 𝘛𝘳𝘦𝘢𝘵𝘮𝘦𝘯𝘵 𝘖𝘶𝘵𝘤𝘰𝘮𝘦𝘴 𝘛𝘩𝘳𝘰𝘶𝘨𝘩 𝘔𝘢𝘤𝘩𝘪𝘯𝘦 𝘓𝘦𝘢𝘳𝘯𝘪𝘯𝘨 𝘚𝘶𝘳𝘷𝘪𝘷𝘢𝘭 𝘈𝘯𝘢𝘭𝘺𝘴𝘪𝘴 𝘢𝘯𝘥 𝘔𝘰𝘥𝘦𝘭 𝘐𝘯𝘵𝘦𝘳𝘱𝘳𝘦𝘵𝘢𝘣𝘪𝘭𝘪𝘵𝘺",
+                title: "Evaluating Breast Cancer Treatment Outcomes Through Machine Learning Survival Analysis and Model Interpretability",
                 authors: "S. K. D. Sharma, Saem Mohammad Nirob, Rumana Islam Riya, Md. Yusuf Hossain Ador, Md. Rokunuzzaman & Mohammed Islam",
-                venue: "𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐧𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐨𝐧 𝐀𝐩𝐩𝐥𝐢𝐞𝐝 𝐀𝐫𝐭𝐢𝐟𝐢𝐜𝐢𝐚𝐥 𝐈𝐧𝐭𝐞𝐥𝐥𝐢𝐠𝐞𝐧𝐜𝐞 (2𝐀𝐈-2026)",
+                venue: "International Conference on Applied Artificial Intelligence (2AI-2026)",
                 abstract: "The breast cancer survival rate prediction remains a challenge in personalized cancer treatment. It requires models that balance predictive accuracy with clinical interpretability. This study evaluates ML survival models augmented with advanced feature engineering techniques. We present an interpretable ensemble strategy that integrates Cox proportional hazards, regularized Cox regression, and random survival forest models. The model demonstrated strong performance on the SEER breast cancer dataset, with a C-index of 0.768 and an IBS of 0.087. Our key contributions include: (1) a novel node-positive ratio feature that improves risk stratification, (2) comprehensive statistical validation with confidence intervals and significance testing, (3) enhanced SHAP-based interpretability analysis that reveals clinically relevant feature interactions, and (4) external validation on multi-institutional data. The proposed ensemble model demonstrates statistically significant improvements over individual models while maintaining clinical interpretability essential for adoption in oncological practice.",
-                keywords: ["Neural Networks", "Model Optimization", "Edge Computing", "Quantization", "Low-Resource"],
+                keywords: ["Survival Analysis", "Machine Learning", "Interpretability", "SHAP", "Oncology"],
                 pdfLink: "assets/cv.pdf", 
                 doiLink: "https://2ai-conference.org/"
             },
             "4": {
-                title: "Breast Cancer Detection with Explainable AI: Grad-CAM and Bounding Box- Based Interpretability",
+                title: "Breast Cancer Detection with Explainable AI: Grad-CAM and Bounding Box-Based Interpretability",
                 authors: "S. K. D. Sharma, Md. Yusuf Hossain Ador, Md. Rokunuzzaman, Futanta Chakma & Mahmud Hossen",
-                venue: " Bangladesh Breast Cancer Conference, 2025",
+                venue: "Bangladesh Breast Cancer Conference, 2025",
                 abstract: "Breast cancer detection using mammographic images is a vital application of AI in medical diagnostics, but the lack of interpretability in deep learning models limits clinical adoption. This study integrates Grad-CAM heatmaps and bounding box visualization to enhance transparency and reliability in AI-driven detection. Using the RSNA Screening Mammography dataset of 54,706 images, we addressed class imbalance through focal loss and up-sampling. Data augmentation techniques and ConvNeXtV1-small and EfficientNetV2 architectures were applied, with breast bounding boxes detected via YOLOX. ConvNeXtV1-small outperformed EfficientNetV2, achieving a probabilistic F1 (pF1) score of 0.558 versus 0.331. Grad-CAM heatmaps highlighted diagnostic features, aligning with radiologists' assessments, while bounding boxes improved lesion localization. These techniques enhance AI interpretability, improving trust in automated breast cancer detection. Future work will explore Transformer-based architectures and advanced data augmentation to improve robustness.",
-                keywords: ["Computer Vision", "Object Detection", "YOLO", "Real-Time Processing", "Deep Learning"],
+                keywords: ["Computer Vision", "Explainable AI", "Grad-CAM", "Bounding Box", "Deep Learning"],
                 pdfLink: "assets/cv.pdf", 
                 doiLink: "https://bsbcs.info/event/1/publication/51/"
             },
@@ -114,14 +156,16 @@
                 });
             } else {
                 document.getElementById('paper-title').textContent = "Paper Not Found";
-                document.querySelector('.paper-section').style.display = 'none';
+                // Hide all paper sections if the paper is not found
+                document.querySelectorAll('.paper-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.querySelector('.paper-actions').style.display = 'none';
             }
         });
     </script>
+    
+    <!-- External Script for Theme, Mobile Menu, and Search -->
     <script src="js/script.js"></script>
-    <!-- FLOATING BACK BUTTON (Place this right before </body>) -->
-    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
-    <i class="fas fa-arrow-left"></i> Back to Publications
-    </a>
 </body>
 </html>

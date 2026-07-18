@@ -18,7 +18,13 @@
             <div class="nav-brand">
                 <a href="index.html">Samrat Kumar Dev Sharma</a>
             </div>
-            <ul class="nav-menu">
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html#about" class="nav-link">About me</a></li>
                 <li><a href="index.html#academic" class="nav-link">Academic</a></li>
                 <li><a href="index.html#interests" class="nav-link">Research</a></li>
@@ -27,7 +33,13 @@
                 <li><a href="index.html#experience" class="nav-link">Experience</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
+            
             <div class="nav-icons">
+                <!-- Search Icon Button -->
+                <button id="search-toggle" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
                     <i class="fas fa-sun"></i>
                 </button>
@@ -35,18 +47,21 @@
         </div>
     </nav>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="publications-page">
         <div class="pub-page-header">
             <h1><i class="fas fa-file-alt"></i> All Publications</h1>
             <p>Complete list of my research publications and projects. Click on any title to view the abstract.</p>
         </div>
-        <!--<div style="text-align: center; margin-bottom: 2rem;">
-            <a href="index.html" class="btn-secondary">
-                <i class="fas fa-home"></i> Back to Main Page
-            </a>
-        </div>  -->
-        
 
         <div class="pub-page-content">
             
@@ -59,8 +74,8 @@
                     <div class="pub-authors"><strong>S. K. D. Sharma</strong></div>
                     <div class="pub-venue">arXiv preprint arXiv:2408.08939, 2024</div>
                     <div class="pub-links">
-                        <a href="assets/pdf/osc.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                        <a href="https://doi.org/10.48550/arXiv.2408.08939" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                        <a href="assets/pdf/osc.pdf" class="pub-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="https://doi.org/10.48550/arXiv.2408.08939" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                         <a href="#" class="pub-link"><i class="fas fa-code"></i> Code</a>
                     </div>
                 </div>
@@ -70,13 +85,13 @@
                     <div class="pub-authors"><strong>S. K. D. Sharma</strong></div>
                     <div class="pub-venue">Advances in Artificial Intelligence Research, 2024</div>
                     <div class="pub-links">
-                        <a href="assets/pdf/nlp.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                        <a href="https://doi.org/10.54569/aair.1549781" class="pub-link"><i class="fas fa-link"></i> DOI</a>
+                        <a href="assets/pdf/nlp.pdf" class="pub-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="https://doi.org/10.54569/aair.1549781" class="pub-link" target="_blank"><i class="fas fa-link"></i> DOI</a>
                     </div>
                 </div>
 
                 <div class="pub-item">
-                    <a href="paper-details.html?id=3" class="pub-title-link">Optimizing Neural Networks for Low-Resource Environments</a>
+                    <a href="paper-details.html?id=5" class="pub-title-link">Optimizing Neural Networks for Low-Resource Environments</a>
                     <div class="pub-authors">Co-Author Name, <strong>S. K. D. Sharma</strong></div>
                     <div class="pub-venue">IEEE Transactions on Machine Learning, Vol. 12, 2023</div>
                     <div class="pub-links">
@@ -92,7 +107,7 @@
                 
                 <div class="pub-item">
                     <div class="pub-badge">Top Conference</div>
-                    <a href="conference.html?id=4" class="pub-title-link">Real-Time Object Detection Using Enhanced YOLO Architecture</a>
+                    <a href="paper-details.html?id=6" class="pub-title-link">Real-Time Object Detection Using Enhanced YOLO Architecture</a>
                     <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Team Member One, Team Member Two</div>
                     <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2024</div>
                     <div class="pub-links">
@@ -104,7 +119,7 @@
 
                 <div class="pub-item">
                     <div class="pub-badge">Conference</div>
-                    <a href="conference.html?id=5" class="pub-title-link">Transformer Models for Low-Resource Language Translation</a>
+                    <a href="paper-details.html?id=7" class="pub-title-link">Transformer Models for Low-Resource Language Translation</a>
                     <div class="pub-authors">Collaborator A, <strong>S. K. D. Sharma</strong>, Collaborator B</div>
                     <div class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL), 2023</div>
                     <div class="pub-links">
@@ -115,7 +130,7 @@
 
                 <div class="pub-item">
                     <div class="pub-badge">Conference</div>
-                    <a href="conference.html?id=6" class="pub-title-link">Scalable Machine Learning Pipelines for Healthcare</a>
+                    <a href="paper-details.html?id=8" class="pub-title-link">Scalable Machine Learning Pipelines for Healthcare</a>
                     <div class="pub-authors"><strong>S. K. D. Sharma</strong>, Research Team</div>
                     <div class="pub-venue">International Conference on Machine Learning (ICML), 2023</div>
                     <div class="pub-links">
@@ -197,12 +212,11 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
-    <!-- FLOATING BACK BUTTON (Place this right before </body>) -->
+    <!-- FLOATING BACK BUTTON -->
     <a href="index.html" class="floating-back-btn" title="Back to Main Page">
         <i class="fas fa-home"></i> Back to Main Page
     </a>
     
-    
+    <script src="js/script.js"></script>
 </body>
 </html>
