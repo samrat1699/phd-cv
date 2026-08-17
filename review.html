@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Details | Samrat Kumar Dev Sharma</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">Samrat Kumar Dev Sharma</a>
+            </div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#about" class="nav-link">About me</a></li>
+                <li><a href="index.html#academic" class="nav-link">Academic</a></li>
+                <li><a href="index.html#publications" class="nav-link">Publications</a></li>
+                <li><a href="publications.html" class="nav-link">All Publications</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <!-- Search Icon Button -->
+                <button id="search-toggle" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search publications, skills, or education...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Paper Details Content -->
+    <div class="paper-details-page">
+        <div class="paper-container">
+            <button onclick="history.back()" class="smart-back-button">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+            
+            <h1 id="paper-title" class="paper-main-title">Loading Paper...</h1>
+            
+            <div class="paper-meta-info">
+                <p><i class="fas fa-users"></i> <strong>Authors:</strong> <span id="paper-authors"></span></p>
+                <p><i class="fas fa-book-open"></i> <strong>Published in:</strong> <span id="paper-venue"></span></p>
+            </div>
+
+            <div class="paper-section">
+                <h2><i class="fas fa-align-left"></i> Abstract</h2>
+                <p id="paper-abstract" class="abstract-text"></p>
+            </div>
+
+            <div class="paper-section">
+                <h2><i class="fas fa-tags"></i> Keywords</h2>
+                <div id="paper-keywords" class="keywords-container"></div>
+            </div>
+
+            <div class="paper-actions">
+                <a href="#" id="link-pdf" class="action-btn" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                <a href="#" id="link-doi" class="action-btn" target="_blank"><i class="fas fa-link"></i> View DOI</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING BACK BUTTON -->
+    <a href="index.html#publications" class="floating-back-btn" title="Back to Publications">
+        <i class="fas fa-arrow-left"></i> Back to Publications
+    </a>
+
+    <!-- Paper Database & Loading Script -->
+    <script>
+        const papersDatabase = {
+            
+            "3": {
+                title: "Survey-Calibrated Machine Learning for Predicting Acute Respiratory Infection in Under-Five Children: Evidence from Bangladesh Demographic and Health Survey 2022",
+                authors: "S. K. D. Sharma, Md. Yusuf Hossain Ador, Md. Rukonuzzaman, Futanta Chakma, Mahmud Hossen, Jakir Hossain & Md. Kamruzzaman",
+                venue: "Scientific Reports",
+                abstract:`#`,
+                keywords: [],
+                pdfLink: "#", 
+                doiLink: "#"
+            },
+            "4": {
+                title: "A Comparative Study of Machine Learning Classifiers for Different Language Spam SMS Detection: Performance Evaluation and Analysis",
+                authors: "S. K. D. Sharma",
+                venue: "Advances in Artificial Intelligence Research, 2024",
+                abstract: `With the continuous rise in the number of mobile device users, SMS (Short Message Service) remains a prevalent communication tool accessible on both smartphones and basic phones. Consequently, SMS traffic has experienced a significant surge. This increase has also led to a rise in spam messages, as spammers seek financial or business gains through activities like marketing promotions, lottery scams, and credit card information theft. Consequently, spam classification has become a focal point of research. In this paper, we explore the effectiveness of 11 machine learning algorithms for SMS spam detection, including multinomial Naïve Bayes, K-Nearest Neighbors (KNN), and Random Forest, among others. Utilizing datasets from UCI and Bangla SMS collections, our experimental results reveal that the multinomial Naïve Bayes algorithm surpasses previous models in spam detection, achieving accuracies of 98.65% and 89.10% in the respective datasets.`,
+                keywords: ["Spam SMS Detection", "NLP", "Machine Learning", "Deep Learning", "Naïve Bayes"],
+                pdfLink: "assets/pdf/nlp.pdf", 
+                doiLink: "https://doi.org/10.54569/aair.1549781"
+            },
+            "5": {
+                title: "Explainable machine learning for crop recommendation using statistical validation and SHAP interpretability in South Asian agricultural data",
+                authors: "S. K. D. Sharma",
+                venue: "Discover Plants 3, 317 (2026)",
+                abstract: "Agricultural decision-support systems powered by machine learning (ML) have emerged as critical tools for enhancing crop productivity and food security, particularly for smallholder farmers in developing regions. However, many existing models lack methodological rigor, statistical validation, and interpretability—key requirements for real-world deployment. This study presents a comprehensive, reproducible ML framework for crop recommendation that integrates comparative feature selection, multi-model benchmarking, statistical significance testing with Nadeau–Bengio correction, and SHAP-based explainability. Using a dataset of 10,000 agricultural records from South Asia comprising 36 original features reduced to 10 selected predictors, we evaluated seven base classifiers alongside two ensemble strategies. Random Forest achieved the highest fivefold cross-validated accuracy (79.8%, 95% CI [79.0–80.6%]) and Macro F1 (0.474, 95% CI [0.455–0.492]), with consistent performance under tenfold cross-validation (accuracy: 79.7%, 95% CI [79.1–80.4%]; Macro F1: 0.471, 95% CI [0.460–0.482]). The Friedman test confirmed significant differences among models (χ2 = 25.25, df = 7, p < 0.001). Nadeau–Bengio corrected post-hoc testing revealed that Random Forest significantly outperformed only SVM and Logistic Regression (p < 0.05), while differences with gradient-boosting models were statistically non-significant in fivefold CV, though tenfold analysis showed marginal significance against Gradient Boosting (p = 0.0243). SHAP analysis identified rainfall (mean |SHAP|= 0.0772), temperature (0.0613), soil pH (0.0300), and nitrogen content (0.0244) as the top predictive features. Regional analysis revealed crop-specific optimal conditions: Rice (pH 5.48–7.43, rainfall 2209 mm), Wheat (pH 6.39–7.79, rainfall 1470 mm), Maize (pH 5.13–6.89, rainfall 1048 mm), and Cotton (pH 5.07–6.63, rainfall 594 mm). All code, data, and artifacts are publicly available. While pronounced class imbalance inherently constrains minority-class prediction, this framework establishes methodological standards for reproducible, interpretable agricultural AI by prioritizing statistical validation with proper dependence correction, imbalance-aware evaluation, and agronomic explainability.",
+                keywords: ["Crop recommendation", "Machine learning", "Explainable AI", "SHAP", "Feature selection", "Statistical testing", "Nadeau–Bengio correction", "Precision agriculture", "Smallholder farmers"],
+                pdfLink: "assets/pdf/discov.pdf", 
+                doiLink: "https://doi.org/10.1007/s44372-026-00795-7"
+            },
+            "6": {
+                title: "Independent Survival Benefit of Early Stage Diagnosis in Lung Cancer Using Propensity Score Matching and Stratified Cox Proportional Hazards Models",
+                authors: "S. K. D. Sharma, Md. Yusuf Hossain Ador & Md. Kamruzzaman",
+                venue: "Discover Oncology",
+                abstract: "#",
+                keywords: [],
+                pdfLink: "#", 
+                doiLink: "#"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paperId = urlParams.get('id');
+            const paper = papersDatabase[paperId];
+
+            if (paper) {
+                document.title = paper.title + " | Samrat Kumar Dev Sharma";
+                document.getElementById('paper-title').textContent = paper.title;
+                document.getElementById('paper-authors').textContent = paper.authors;
+                document.getElementById('paper-venue').textContent = paper.venue;
+                document.getElementById('paper-abstract').textContent = paper.abstract;
+                document.getElementById('link-pdf').href = paper.pdfLink;
+                document.getElementById('link-doi').href = paper.doiLink;
+
+                const keywordsContainer = document.getElementById('paper-keywords');
+                keywordsContainer.innerHTML = '';
+                paper.keywords.forEach(keyword => {
+                    const span = document.createElement('span');
+                    span.className = 'keyword-tag';
+                    span.textContent = keyword;
+                    keywordsContainer.appendChild(span);
+                });
+            } else {
+                document.getElementById('paper-title').textContent = "Paper Not Found";
+                document.querySelectorAll('.paper-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+            }
+        });
+    </script>
+    
+    <!-- External Script for Theme, Mobile Menu, and Search -->
+    <script src="js/script.js"></script>
+</body>
+</html>
